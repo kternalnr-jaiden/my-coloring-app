@@ -65,7 +65,7 @@
     margin-top: 4px;
   }
 
-  /* ── 탭 ── */
+  /* ── 탭: 2열 그리드, 마지막이 홀수면 전체 너비 ── */
   .page-selector {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -92,6 +92,11 @@
     cursor: pointer;
     transition: all 0.25s ease;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  /* 5번째 탭(홀수 마지막)은 두 칸 차지 */
+  .page-tab:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 
   .page-tab .tab-emoji { font-size: 18px; }
@@ -335,7 +340,7 @@
     <p>예쁘게 색칠해봐요!</p>
   </header>
 
-  <!-- 도안 선택 탭 (2x2 그리드) -->
+  <!-- 도안 선택 탭 -->
   <div class="page-selector">
     <button class="page-tab active" data-page="0" onclick="selectPage(0)">
       <span class="tab-emoji">🦄</span> 유니콘·토끼
@@ -348,6 +353,9 @@
     </button>
     <button class="page-tab" data-page="3" onclick="selectPage(3)">
       <span class="tab-emoji">👦👧</span> 오빠랑 나
+    </button>
+    <button class="page-tab" data-page="4" onclick="selectPage(4)">
+      <span class="tab-emoji">🌸</span> 티니핑 친구들
     </button>
   </div>
 
@@ -407,6 +415,7 @@ const PAGES = [
   { src: 'images/page2.png', label: '펭귄·사슴' },
   { src: 'images/page3.png', label: '엄마랑나' },
   { src: 'images/page4.png', label: '오빠랑나' },
+  { src: 'images/page5.png', label: '티니핑친구들' },
 ];
 
 let currentPageIndex = 0;
